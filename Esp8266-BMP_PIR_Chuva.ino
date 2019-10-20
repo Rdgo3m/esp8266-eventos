@@ -66,7 +66,7 @@ p=p/100;
 {
  //Enviando p/ o host a temperatura e pressao.
  
-  client.print(String("GET /add.php?MSG_Texto1=") + int(t) + String("C*_")  + int(p) + String("hPa(ESP8266)") +
+  client.print(String("GET /add.php?Evento1=") + int(t) + String("C*_")  + int(p) + String("hPa(ESP8266)") +
                       " HTTP/1.1\r\n" + "Host: " + host + "\r\n" + "Connection: close\r\n\r\n");
   Serial.print("Temperatura Enviada: ");
   Serial.println(t);
@@ -85,13 +85,13 @@ count=0;
 
  if ((sensorState==1)&&(flag==false))
  {
-client.print(String("GET /add.php?MSG_Texto1=") + String("PIR_Acionado") +
+client.print(String("GET /add.php?Evento1=") + String("PIR_Acionado") +
                       " HTTP/1.1\r\n" + "Host: " + host + "\r\n" + "Connection: close\r\n\r\n");
   flag=true;
   }
  if ((sensorState==0)&&(flag==true))
  {
- client.print(String("GET /add.php?MSG_Texto1=") + String("PIR_Desacionado") +
+ client.print(String("GET /add.php?Evento1=") + String("PIR_Desacionado") +
                       " HTTP/1.1\r\n" + "Host: " + host + "\r\n" + "Connection: close\r\n\r\n");
   flag=false;
  
@@ -111,7 +111,7 @@ Serial.println(media);
            {
                     if(media<960)
            {
-client.print(String("GET /add.php?MSG_Texto1=") + String("Inicio_Chuva_2") +
+client.print(String("GET /add.php?Evento1=") + String("Inicio_Chuva_2") +
                       " HTTP/1.1\r\n" + "Host: " + host + "\r\n" + "Connection: close\r\n\r\n");
          flagRain=1;
           }                     
@@ -121,7 +121,7 @@ client.print(String("GET /add.php?MSG_Texto1=") + String("Inicio_Chuva_2") +
            {
                     if(media>1005) 
            {
-client.print(String("GET /add.php?MSG_Texto1=") + String("Sensor_Seco_2") +
+client.print(String("GET /add.php?Evento1=") + String("Sensor_Seco_2") +
                       " HTTP/1.1\r\n" + "Host: " + host + "\r\n" + "Connection: close\r\n\r\n");
             flagRain=0;
           }
